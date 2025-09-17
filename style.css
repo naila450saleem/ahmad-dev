@@ -996,7 +996,7 @@ footer {
 @media (max-width: 768px) {
   .footer-profile {
     text-align: center;
-    margin-top: 5px;
+    margin-top: 20px;
   }
 
   .brand-wrapper h3 {
@@ -1004,11 +1004,11 @@ footer {
   font-size: 20px !important;
   font-weight: 600;
   color: #000 !important;
-
+  margin-left: -2px !important;
 }
 
   .footer-content {
-    grid-template-columns: 1fr 1fr; /* 2 columns in tablet */
+    grid-template-columns: 2fr 1fr; /* 2 columns in tablet */
     gap: 30px;
   }
 
@@ -1025,6 +1025,18 @@ footer {
    .footer-content .footer-section:nth-child(2),
   .footer-content .footer-section:nth-child(4) {
     margin-left: 0;
+  }
+
+  .footer-section h3 {
+    text-align: left; /* heading center */
+    margin-left: 30px;
+    margin-top: 30px;
+  }
+
+  .footer-section ul,
+  .footer-section p {
+    text-align: left; /* links/text left */
+    margin-left: 30px;
   }
 }
 
