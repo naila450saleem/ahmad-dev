@@ -136,6 +136,7 @@ header {
 
   .hamburger {
     display: flex; /* mobile par show */
+    margin-top: 15px;
   }
 
     .logo {
@@ -1016,6 +1017,12 @@ footer {
     flex-direction: column;
     text-align: center;
     margin: 0 20px;
+
+  }
+
+  .footer-bottom p {
+    margin-right: 10px; /* desktop 70px se kam karke 20px ya jo chahiye set karo */
+    text-align: right;  /* optional, agar text right align chahiye */
   }
 
   .footer-bottom .social-icons {
