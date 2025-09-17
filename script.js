@@ -1,3 +1,13 @@
+// humberger
+    const hamburger = document.querySelector(".hamburger");
+  const navLinks = document.querySelector(".nav-links");
+
+  hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("show");     // nav menu toggle
+    hamburger.classList.toggle("active");  // hamburger → X
+  });
+
+
 // Scroll reveal animation
 window.addEventListener("scroll", () => {
   const reveals = document.querySelectorAll(".reveal");

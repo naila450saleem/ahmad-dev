@@ -1,3 +1,6 @@
+        html, body {
+  overflow-x: hidden;
+}
 /* General Styles */
 * {
   margin: 0;
@@ -78,6 +81,72 @@ header {
   color:  blue;               /* hover effect */
 }
 
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  z-index: 1100; /* menu ke upar */
+  margin-top: -50px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: black;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Active state = X */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0; /* middle line hide */
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.hamburger {
+  display: none; /* desktop par hide */
+}
+
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* default hide */
+    flex-direction: column;
+    position: absolute;
+    top: 70px;   /* navbar ke niche */
+    right: 50px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex; /* mobile par show */
+  }
+
+    .logo {
+    font-size: 18px;   /* pehle 24px tha, ab chhota */
+  }
+
+  .role {
+    font-size: 12px;   /* pehle 14px tha, ab chhota */
+  }
+}
+
 
 /* ========================= */
 /* HERO SECTION */
@@ -131,7 +200,7 @@ body {
   margin-bottom: 20px;
   color: #212121;
   line-height: 1.2;
-  margin-left: -50px !important;
+  margin-left: 0;
 }
 
 .hero-content .desc {
@@ -139,7 +208,7 @@ body {
   margin-bottom: 25px;
   color: #444;
   max-width: 500px;
-  margin-left: -45px !important;
+  margin-left: 0 !important;
 }
 
 .hero-buttons {
@@ -202,12 +271,13 @@ body {
 }
 
 .image-container img {
-  max-width: 540px;   /* image badi kar di */
+  max-width: 100%;   /* image badi kar di */
+  height: auto;
   border-radius: 15px;
   position: relative;
   z-index: 2; /* Image circle ke upar rahe */
   top: -50px;
-  right: 20%;
+  right: 0;
 }
 
 /* Blue Circle Glow */
@@ -215,7 +285,7 @@ body {
   content: "";
   position: absolute;
   top: 25%;
-  left: 30%;
+  left: 46%;
   width: 450px;   /* circle bara */
   height: 380px;
   transform: translate(-50%, -50%);
@@ -274,21 +344,115 @@ body {
 /* Alag-alag position */
 .floating-buttons button:nth-child(1) {
   top: 70px;
-  right: 80px;   /* thoda left */
+  right: -10px;   /* thoda left */
   margin-bottom: 20px !important;
 }
 
 .floating-buttons button:nth-child(2) {
   top: 150px;
   /* left: 50%; */
-   right: 50px;  
+   right: 0;  
 
 }
 
 .floating-buttons button:nth-child(3) {
   top: 240px;
-  right: 45px;   /* thoda right */
+  right: -60px;   /* thoda right */
 }
+
+@media (max-width: 768px) {
+
+  /* Navbar */
+  header {
+    padding: 15px 20px;
+  }
+
+  .nav-links {
+    right: 20px; /* thoda left le ao */
+    width: 200px; /* proper width */
+  }
+
+  /* Hero Section */
+
+  
+  .hero {
+    flex-direction: column-reverse; /* Pehle text, phir image */
+    padding: 100px 5% 40px 5%;      /* kam padding */
+    min-height: auto !important;    /* height force na karo */
+    text-align: center;
+  }
+
+  .hero-content {
+    text-align: center;
+    animation: none;
+  }
+
+  .hero-content h1 {
+    font-size: 28px;
+    padding-top: 50px;
+  }
+
+  .hero-content h2 {
+    font-size: 20px;
+  }
+
+  .hero-content .desc {
+    margin: 0 auto 20px auto;
+    font-size: 14px;
+  }
+
+  .hero-buttons {
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .hero-buttons .btn {
+    margin-left: 0; /* mobile par left gap hata do */
+    width: 200px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  /* Hero Image */
+  .hero-image {
+    margin-top: 20px;
+  }
+
+  .image-container img {
+    top: 0;
+    max-width: 80%; /* thoda chhota kar do */
+  }
+
+  /* Floating Buttons */
+  .floating-buttons {
+    position: relative;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  /* Sirf 1 aur 2 ke beech ka gap kam */
+  .floating-buttons button:nth-child(1) {
+    margin-bottom: -3px !important; /* ✅ default gap kam kar diya */
+  }
+
+  .mobile-hide-br {
+    display: none;
+  }
+
+  .floating-buttons button {
+    position: static;
+    width: auto;
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+}
+
+
+
+
 
 
 /* About Section */
@@ -832,7 +996,16 @@ footer {
 @media (max-width: 768px) {
   .footer-profile {
     text-align: center;
+    margin-top: 5px;
   }
+
+  .brand-wrapper h3 {
+  margin: 0;
+  font-size: 20px !important;
+  font-weight: 600;
+  color: #000 !important;
+
+}
 
   .footer-content {
     grid-template-columns: 1fr 1fr; /* 2 columns in tablet */

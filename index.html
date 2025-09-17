@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Portfolio Website</title>
   <!-- AOS CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
@@ -13,23 +15,32 @@
 </head>
 <body>
   
-  <!-- Navbar -->
-  <header>
-    <nav class="navbar">
-     <div class="logo-section">
-  <div class="logo">Ahmad Raza Ghouri</div>
-  <p class="role">Content Creator & Social Media Specialist</p>
-</div>
+<!-- Navbar -->
+<header>
+  <nav class="navbar">
+    <div class="logo-section">
+      <div class="logo">Ahmad Raza Ghouri</div>
+      <p class="role">Content Creator & Social Media Specialist</p>
+    </div>
 
-      <ul class="nav-links">
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Our services</a></li>
-        <li><a href="#works">Works</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <!-- Hamburger Button -->
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Navigation Links -->
+    <ul class="nav-links">
+      <li><a href="#hero" onclick="closeMenu()">Home</a></li>
+      <li><a href="#about" onclick="closeMenu()">About</a></li>
+      <li><a href="#services" onclick="closeMenu()">Our services</a></li>
+      <li><a href="#works" onclick="closeMenu()">Works</a></li>
+      <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
 
    <!-- Hero Section -->
 <section class="hero" id="hero">
@@ -51,8 +62,8 @@
       <img src="images/1.png" alt="Hero Image" />
   <div class="floating-buttons" data-aos="fade-down">
   <button><i class="fa-solid fa-pen"></i> Content Creation</button>
-  <button><i class="fa-solid fa-volume-high"></i>  Social Media <br> Marketing</button>
-  <button><i class="fa-solid fa-lock"></i> E-commerce <br> Store Development</button>
+  <button><i class="fa-solid fa-volume-high"></i>  Social Media  Marketing</button>
+   <button><i class="fa-solid fa-lock"></i> E-commerce <br class="mobile-hide-br"> Store Development</button>
 </div>
 
     </div>
@@ -243,6 +254,10 @@
     duration: 1000, // animation time (1s)
     once: true      // sirf ek bar animation chale
   });
+
+
+ 
+
 </script>
 
  <script src="script.js"></script>
