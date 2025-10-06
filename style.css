@@ -1676,3 +1676,31 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
+/* --- Fix WhatsApp Button Click Issue in Hero --- */
+.hero .btn.secondary {
+  position: relative;
+  z-index: 15;         /* bring button above any layer */
+  pointer-events: auto; /* ensure it's clickable */
+}
+
+[data-aos="zoom-in"] {
+  pointer-events: auto !important;
+}
+
+.hero-image,
+.image-container,
+.image-container::before,
+.floating-buttons {
+  z-index: 1;
+  pointer-events: none;  /* prevent them from blocking clicks */
+}
+
+.hero-content {
+  z-index: 10;
+  position: relative;
+}
+
+
+
+
