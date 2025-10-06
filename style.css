@@ -780,6 +780,43 @@ background: linear-gradient(180deg,
 }
 
 
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Primary button style */
+.btn.primary {
+  background: linear-gradient(135deg, #0078ff, #0056d2);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 120, 255, 0.3);
+}
+
+.btn.primary:hover {
+  background: linear-gradient(135deg, #0056d2, #0041a8);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 120, 255, 0.45);
+}
+
+/* Optional: active state for click feedback */
+.btn.primary:active {
+  transform: scale(0.97);
+}
+
+/* Responsive (smaller padding for mobile) */
+@media (max-width: 768px) {
+  .btn {
+    padding: 10px 22px;
+    font-size: 15px;
+  }
+}
+
 
 /* ✅ Tablet & Mobile Layout */
 @media (max-width: 1024px) {
