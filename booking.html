@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Book a 1:1 — Mock Calendly UI</title>
+
+<!-- Google fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #f6f7f8;
+    --card-bg: #fff;
+    --muted: #7a7f85;
+    --accent: #0e5bd8; /* blue */
+    --accent-soft: rgba(14,91,216,0.12);
+    --border: #e6e8ea;
+    --text-dark: #0b2230;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: var(--bg);
+    color:var(--text-dark);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    padding:40px;
+  }
+
+  /* container */
+  .booking-wrap{
+    max-width:1100px;
+    margin:0 auto;
+    background:var(--card-bg);
+    border-radius:10px;
+    display:flex;
+    box-shadow:0 6px 22px rgba(12,18,20,0.06);
+    overflow:hidden;
+    border:1px solid var(--border);
+  }
+
+  /* left profile */
+  .left {
+    flex: 0 0 45%;
+    padding:34px 36px;
+    min-width:300px;
+    position:relative;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+  }
+  .logo .mark{
+    font-family:"Montserrat",sans-serif;
+    font-weight:800;
+    font-size:38px;
+    color:blue; /* yellow like screenshot */
+  }
+  .logo .sub{
+    font-size:14px;
+    color:var(--muted);
+    margin-left:6px;
+  }
+
+  .profile {
+    display:flex;
+    gap:18px;
+    align-items:flex-start;
+  }
+  .avatar {
+    width:72px;
+    height:72px;
+    border-radius:50%;
+    overflow:hidden;
+    flex-shrink:0;
+    box-shadow:0 6px 16px rgba(12,18,20,0.06);
+    border:2px solid #7a7f85; /* yellow ring */
+    background: white;
+  }
+  .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+
+  .meta {
+    flex:1;
+  }
+  .meta h4{
+    margin:0;
+    font-size:16px;
+    color:var(--muted);
+    font-weight:700;
+  }
+  .title{
+    margin:10px 0 18px 0;
+    font-size:28px;
+    line-height:1.05;
+    font-weight:800;
+    color:var(--text-dark);
+  }
+
+  .info-row{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    color:var(--muted);
+    font-size:14px;
+    margin-bottom:18px;
+  }
+  .info-row .dot{
+    width:18px;height:18px;border-radius:50%;background:var(--border);display:inline-flex;align-items:center;justify-content:center;
+  }
+
+  .note{
+    color:var(--muted);
+    font-size:14px;
+    margin-top:6px;
+    max-width:90%;
+  }
+
+  .cookie{
+    margin-top:70%;
+    color: #1e63d6;
+    font-weight:600;
+    font-size:14px;
+
+  }
+
+  /* vertical divider */
+  .divider{
+    width:1px;
+    background:var(--border);
+    align-self:stretch;
+  }
+
+  /* right calendar */
+  .right {
+    flex: 1 1 55%;
+    padding:26px 34px;
+    position:relative;
+    min-width:340px;
+  }
+
+  /* Calendly ribbon (top-right) */
+  .ribbon{
+    position:absolute;
+    right:-6px;
+    top:-6px;
+    width:120px;
+    height:80px;
+    transform:rotate(30deg);
+    background:linear-gradient(180deg,#44484b,#2f3437);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:11px;
+    font-weight:700;
+    box-shadow:0 6px 18px rgba(0,0,0,0.12);
+  }
+  .ribbon span{transform: rotate(-30deg); display:block; text-transform:uppercase; letter-spacing:0.6px}
+
+  .calendar-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:18px;
+  }
+  .calendar-head h3{
+    margin:0;
+    font-size:20px;
+    font-weight:800;
+  }
+  .navs{
+    display:flex;
+    gap:10px;
+    align-items:center;
+  }
+  .nav-btn{
+    width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:none;background:var(--border);
+    cursor:pointer;
+  }
+
+  .month{
+    text-align:center;
+    font-weight:600;
+    color:var(--muted);
+    margin-bottom:12px;
+  }
+
+  .weekdays{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:6px;
+    margin-bottom:10px;
+    color:var(--muted);
+    font-size:12px;
+    text-align:center;
+  }
+
+  .days{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:12px;
+    justify-items:center;
+    align-items:center;
+    padding-bottom:14px;
+  }
+
+  .day{
+    width:44px;
+    height:44px;
+    display:inline-grid;
+    place-items:center;
+    border-radius:50%;
+    cursor:pointer;
+    font-weight:700;
+    color:var(--accent);
+    background:var(--accent-soft);
+    user-select:none;
+  }
+  .day.inactive{
+    background:transparent;
+    color:var(--muted);
+    font-weight:600;
+    cursor:default;
+  }
+  .day.selected{
+    box-shadow:0 6px 16px rgba(14,91,216,0.14);
+    background:var(--accent);
+    color:#fff;
+  }
+
+  .tz{
+    margin-top:18px;
+    color:var(--muted);
+    font-size:14px;
+    display:flex;
+    gap:10px;
+    align-items:center;
+  }
+
+  /* responsive */
+  @media (max-width:900px){
+    body{padding:18px}
+    .booking-wrap{flex-direction:column}
+    .left{flex-basis:auto;padding:20px}
+    .right{padding:20px}
+    .divider{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="booking-wrap" role="region" aria-label="Booking UI">
+
+  <!-- LEFT -->
+  <div class="left">
+    <div class="logo">
+      <div class="mark">Ahmad<span style="color:#000">.</span></div>
+      <div class="sub">connect</div>
+    </div>
+
+    <div class="profile">
+      <div class="avatar" aria-hidden="true">
+        <!-- Replace src with your image path -->
+        <img src="images/raza.png" alt="Profile photo">
+      </div>
+
+      <div class="meta">
+        <h4>Ahmad Raza Ghouri</h4>
+        <div class="title">1:1 Discovery Call with Ahmad Raza.</div>
+
+        <div class="info-row">
+          <div class="dot" title="Duration">⏱️</div>
+          <div style="font-weight:700">1 hr</div>
+        </div>
+
+        <div class="info-row">
+          <div class="dot" title="Online">💻</div>
+          <div class="note">Web conferencing details provided upon confirmation.</div>
+        </div>
+
+        <div class="cookie">Cookie settings</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider" aria-hidden="true"></div>
+
+  <!-- RIGHT -->
+  <div class="right">
+    <div class="ribbon" aria-hidden="true"><span>powered by<br>Calendly</span></div>
+
+    <div class="calendar-head">
+      <h3>Select a Date &amp; Time</h3>
+      <div class="navs">
+        <button id="prev" class="nav-btn" aria-label="Previous month">‹</button>
+        <button id="next" class="nav-btn" aria-label="Next month">›</button>
+      </div>
+    </div>
+
+    <div class="month" id="monthLabel">October 2025</div>
+
+    <div class="weekdays" aria-hidden="true">
+      <div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div><div>SUN</div>
+    </div>
+
+    <div class="days" id="daysGrid" role="grid" aria-label="Calendar days">
+      <!-- Days injected by JS -->
+    </div>
+
+    <div class="tz">
+      <div style="font-size:18px">🌐</div>
+      <div>
+        <div style="font-weight:700">Pacific Time - US &amp; Canada</div>
+        <div style="color:var(--muted); font-size:13px"> (12:39am)</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/*
+  Simple calendar renderer.
+  - Renders the visible month (week starts Monday to match screenshot)
+  - Click a day to select (adds .selected)
+  - Inactive days (from previous/next month) have class 'inactive'
+  Replace avatar src and texts to match your content.
+*/
+
+(function(){
+  const daysGrid = document.getElementById('daysGrid');
+  const monthLabel = document.getElementById('monthLabel');
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
+
+  // Start showing October 2025 to match screenshot
+  let viewDate = new Date(2025, 9, 1); // months 0-indexed: 9 => October
+
+  function startOfWeek(d){
+    // return Monday as first day of week
+    const day = d.getDay(); // 0 Sun .. 6 Sat
+    // convert: 0 -> 6, 1->0, 2->1 ... (so Monday=0)
+    return (day + 6) % 7;
+  }
+
+  function render(){
+    daysGrid.innerHTML = '';
+    const year = viewDate.getFullYear();
+    const month = viewDate.getMonth();
+    monthLabel.textContent = viewDate.toLocaleString(undefined,{month:'long', year:'numeric'});
+
+    // first day of month
+    const first = new Date(year, month, 1);
+    const last = new Date(year, month + 1, 0);
+    const daysInMonth = last.getDate();
+
+    // calculate how many days from previous month to show (so Monday-first)
+    const leading = startOfWeek(first); // 0..6
+
+    // previous month info
+    const prevLast = new Date(year, month, 0);
+    const prevDays = prevLast.getDate();
+
+    // total slots to render (6 rows x 7 = 42) to keep grid consistent
+    const totalSlots = 42;
+
+    // create slots
+    for(let i=0;i<totalSlots;i++){
+      const slot = document.createElement('div');
+      slot.className = 'day';
+      // Calculate corresponding date number and month relation
+      const dayIndex = i - leading + 1;
+      if(dayIndex <= 0){
+        // previous month
+        slot.classList.add('inactive');
+        slot.textContent = prevDays + dayIndex;
+      } else if (dayIndex > daysInMonth){
+        // next month
+        slot.classList.add('inactive');
+        slot.textContent = dayIndex - daysInMonth;
+      } else {
+        // current month
+        slot.textContent = dayIndex;
+        // Example: mark weekends slightly different? keeping same as screenshot
+        slot.setAttribute('role','button');
+        slot.addEventListener('click', function(){
+          // only allow selecting current month days
+          document.querySelectorAll('.day.selected').forEach(n=>n.classList.remove('selected'));
+          slot.classList.add('selected');
+        });
+      }
+      daysGrid.appendChild(slot);
+    }
+
+    // highlight a sample day (6) as in screenshot: if within month, auto select 6
+    const candidate = Array.from(daysGrid.children).find(n => n.textContent.trim() === '6' && !n.classList.contains('inactive'));
+    if(candidate) candidate.classList.add('selected');
+  }
+
+  prevBtn.addEventListener('click', function(){
+    viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth()-1, 1);
+    render();
+  });
+  nextBtn.addEventListener('click', function(){
+    viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth()+1, 1);
+    render();
+  });
+
+  render();
+})();
+</script>
+
+</body>
+</html>
