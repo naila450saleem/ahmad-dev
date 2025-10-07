@@ -1707,38 +1707,193 @@ footer {
   display: none;
   position: fixed;
   z-index: 9999;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* Changed from center to flex-start for better scrolling */
+  overflow-y: auto;
+  padding: 20px;
+  backdrop-filter: blur(3px); /* Added backdrop effect */
 }
 
 /* Modal Box */
 .modal-content {
   background: #fff;
   color: #333;
-  max-width: 600px;
-  width: 90%;
-  padding: 30px;
-  border-radius: 10px;
+  max-width: 700px; /* Slightly increased for better readability */
+  width: 100%;
+  padding: 40px 35px; /* Increased padding */
+  border-radius: 16px; /* Slightly larger radius */
   position: relative;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
   text-align: left;
+  line-height: 1.7; /* Improved line height for readability */
+  font-family: 'Poppins', sans-serif;
+  margin: 60px auto; /* Centered with proper margin */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+}
+
+/* Headings */
+.modal-content h2 {
+  font-size: 1.8rem;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.modal-content h3 {
+  font-size: 1.3rem;
+  color: #333;
+  margin-top: 25px;
+  margin-bottom: 12px;
+}
+
+/* Paragraphs */
+.modal-content p {
+  margin-bottom: 16px;
+  color: #444;
+}
+
+/* Lists */
+.modal-content ul {
+  margin-left: 24px;
+  margin-bottom: 20px;
+  list-style: disc;
+}
+
+.modal-content li {
+  margin-bottom: 8px;
+  color: #444;
+}
+
+/* Links */
+.modal-content a {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.modal-content a:hover {
+  color: #004499;
+  text-decoration: underline;
 }
 
 /* Close Button */
 .close {
   position: absolute;
-  top: 15px; right: 20px;
-  font-size: 24px;
-  color: #333;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  color: #666;
   cursor: pointer;
+  transition: all 0.3s ease;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .close:hover {
   color: #ff4b2b;
+  background: rgba(0, 0, 0, 0.1);
+  transform: scale(1.1);
 }
+
+/* Strong text */
+.modal-content strong {
+  color: #222;
+  font-weight: 600;
+}
+
+/* Horizontal rule */
+.modal-content hr {
+  border: none;
+  height: 1px;
+  background: #e0e0e0;
+  margin: 25px 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .modal {
+    padding: 15px;
+  }
+  
+  .modal-content {
+    max-width: 95%;
+    padding: 30px 25px;
+    font-size: 0.95rem;
+    margin: 40px auto;
+  }
+
+  .modal-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .modal-content h3 {
+    font-size: 1.2rem;
+  }
+  
+  .close {
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal {
+    padding: 10px;
+  }
+  
+  .modal-content {
+    padding: 25px 20px;
+    margin: 20px auto;
+    border-radius: 12px;
+  }
+
+  .close {
+    top: 8px;
+    right: 12px;
+    font-size: 22px;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .modal-content h2 {
+    font-size: 1.3rem;
+  }
+
+  .modal-content h3 {
+    font-size: 1.1rem;
+  }
+}
+
+/* Animation for modal appearance */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-content {
+  animation: modalFadeIn 0.3s ease-out;
+}
+
 
 
 
