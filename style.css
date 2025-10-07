@@ -991,7 +991,8 @@ background: linear-gradient(180deg,
     padding: 20px;
     height: 130px; /* 🔹 slightly smaller height */
     margin-top: 20px; /* 🔹 reduced top spacing */
-    font-size: 14px;
+    font-size: 15px;
+    padding-top: 30px !important;
   }
 }
 
