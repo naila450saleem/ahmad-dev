@@ -257,14 +257,15 @@
         <p><i class="fas fa-map-marker-alt"></i> Pakistan</p>
       </div>
 
-      <div class="footer-section">
-        <h3>Legals</h3>
-        <ul>
-          <li><a href="#">Claims</a></li>
-          <li><a href="#">Privacy</a></li>
-          <li><a href="#">Terms</a></li>
-        </ul>
-      </div>
+     <div class="footer-section">
+  <h3>Legals</h3>
+  <ul>
+    <li><a href="#" onclick="openModal('claimsModal')">Claims</a></li>
+    <li><a href="#" onclick="openModal('privacyModal')">Privacy</a></li>
+    <li><a href="#" onclick="openModal('termsModal')">Terms</a></li>
+  </ul>
+</div>
+
     </div>
 
     <!-- Footer Bottom -->
@@ -293,6 +294,32 @@
    class="floating-whatsapp-btn" target="_blank">
     <i class="fab fa-whatsapp"></i>
 </a>
+
+<!-- Legal Modals -->
+<div id="claimsModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('claimsModal')">&times;</span>
+    <h2>Claims</h2>
+    <p>This section covers our claim policy. You can reach out to us within 7 days of service delivery for any dispute or correction requests.</p>
+  </div>
+</div>
+
+<div id="privacyModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('privacyModal')">&times;</span>
+    <h2>Privacy Policy</h2>
+    <p>Your privacy is important to us. We don’t share your personal data with third parties without consent. Our communication is strictly confidential.</p>
+  </div>
+</div>
+
+<div id="termsModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('termsModal')">&times;</span>
+    <h2>Terms & Conditions</h2>
+    <p>By using our services, you agree to follow our guidelines regarding fair use, payment timelines, and professional conduct.</p>
+  </div>
+</div>
+
 
 
 
